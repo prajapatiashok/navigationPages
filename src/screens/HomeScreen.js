@@ -5,7 +5,7 @@ import * as addData from '../JsonData/data'
 
 const HomeScreeen = ({navigation}) => {
     const [responseJsonData, setResponseJsonData] = useState([]);
-    const sorted = responseJsonData.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
+    const sortedData = responseJsonData.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
     useEffect(() => {
         temperatureApi.get().then((response) => {
             let responseData = [];
@@ -18,7 +18,7 @@ const HomeScreeen = ({navigation}) => {
     return (
         <View>
             <FlatList
-                data={responseJsonData}
+                data={sortedData}
                 keyExtractor={item => item.index.toString()}
                 renderItem={({item}) => {
                     return(
